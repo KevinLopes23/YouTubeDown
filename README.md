@@ -31,7 +31,7 @@ YTDownloader é uma aplicação web moderna para download de vídeos do YouTube 
 
    ```bash
    git clone https://github.com/KevinLopes23/YouTubeDown.git
-   cd videos-yt
+   cd YouTubeDown
    ```
 
 2. Instale as dependências:
