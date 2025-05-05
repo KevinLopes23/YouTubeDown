@@ -18,12 +18,6 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Definir as opções apropriadas para cada formato
-    const options = {
-      quality: format === "mp3" ? "highestaudio" : "highest",
-      filter: format === "mp3" ? "audioonly" : "audioandvideo",
-    };
-
     try {
       // Buscar informações do vídeo
       const info = await ytdl.getInfo(url);
@@ -33,8 +27,11 @@ export async function GET(request: NextRequest) {
       const contentType = format === "mp3" ? "audio/mpeg" : "video/mp4";
       const filename = `${title}.${format}`;
 
-      // Iniciar o download
-      const stream = ytdl(url, options);
+      // Iniciar o download com opções tipadas corretamente
+      const stream =
+        format === "mp3"
+          ? ytdl(url, { quality: "highestaudio", filter: "audioonly" })
+          : ytdl(url, { quality: "highest" });
 
       // Usar headers para definir o arquivo para download
       const headers = new Headers();
