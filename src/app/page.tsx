@@ -17,18 +17,34 @@ export default function Home() {
       setIsLoading(true);
       setError("");
 
-      // Redireciona para a API de download
-      window.location.href = `/api/download?url=${encodeURIComponent(
-        url
-      )}&format=${format}`;
+      // Chamar nossa API primeiro para validar e obter URL de redirecionamento
+      const response = await fetch(
+        `/api/download?url=${encodeURIComponent(url)}&format=${format}`
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Erro ao processar o vídeo");
+      }
+
+      if (data.success && data.redirectUrl) {
+        // Redirecionar para o serviço externo de download
+        window.location.href = data.redirectUrl;
+      } else {
+        throw new Error("Resposta da API inválida");
+      }
 
       // Reseta o estado após um curto período
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
-    } catch {
-      // Tratamento de erro simplificado sem usar o parâmetro
-      setError("Ocorreu um erro ao processar o download");
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("Ocorreu um erro ao processar o download");
+      }
       setIsLoading(false);
     }
   };
@@ -130,6 +146,32 @@ export default function Home() {
                 Aguarde o processamento e o download irá começar automaticamente
               </li>
             </ol>
+          </div>
+
+          <div className="mt-8 bg-yellow-500/20 backdrop-blur-lg p-6 rounded-xl">
+            <h3 className="text-lg font-bold mb-2 flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              Importante
+            </h3>
+            <p>
+              Este aplicativo usa serviços de terceiros para processar os
+              downloads. Apenas baixe conteúdo que você tenha permissão para
+              acessar. O tempo de processamento pode variar conforme o tamanho
+              do vídeo.
+            </p>
           </div>
         </main>
 

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import ytdl from "@distube/ytdl-core";
+// Vamos remover a dependência ytdl-core e usar uma solução alternativa
+// Primeiro instale com: npm install youtube-dl-exec
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -10,51 +11,33 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "URL não fornecida" }, { status: 400 });
   }
 
+  // Função para validar URL do YouTube
+  const validateYouTubeUrl = (url: string) => {
+    const pattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
+    return pattern.test(url);
+  };
+
   try {
-    if (!ytdl.validateURL(url)) {
+    if (!validateYouTubeUrl(url)) {
       return NextResponse.json(
         { error: "URL do YouTube inválida" },
         { status: 400 }
       );
     }
 
-    try {
-      // Buscar informações do vídeo
-      const info = await ytdl.getInfo(url);
-      const title = info.videoDetails.title.replace(/[^\w\s]/gi, "") || "video";
+    // Redirecionamento para serviços alternativos confiáveis
+    // Esta é uma solução não ideal, mas que funciona em ambientes hospedados
+    const serviceUrl =
+      format === "mp3"
+        ? `https://api.vevioz.com/api/button/mp3/${encodeURIComponent(url)}`
+        : `https://api.vevioz.com/api/button/mp4/${encodeURIComponent(url)}`;
 
-      // Escolher o formato correto baseado no request
-      const contentType = format === "mp3" ? "audio/mpeg" : "video/mp4";
-      const filename = `${title}.${format}`;
-
-      // Iniciar o download com opções tipadas corretamente
-      const stream =
-        format === "mp3"
-          ? ytdl(url, { quality: "highestaudio", filter: "audioonly" })
-          : ytdl(url, { quality: "highest" });
-
-      // Usar headers para definir o arquivo para download
-      const headers = new Headers();
-      headers.set("Content-Disposition", `attachment; filename="${filename}"`);
-      headers.set("Content-Type", contentType);
-
-      // Retornar o stream como resposta
-      return new Response(stream as unknown as ReadableStream, {
-        headers: headers,
-      });
-    } catch (downloadError: unknown) {
-      console.error("Erro detalhado:", downloadError);
-      let errorMessage = "Erro ao processar o vídeo";
-
-      // Verificar se o erro tem uma propriedade 'message'
-      if (downloadError instanceof Error) {
-        errorMessage = `${errorMessage}: ${downloadError.message}`;
-      }
-
-      return NextResponse.json({ error: errorMessage }, { status: 500 });
-    }
+    return NextResponse.json({
+      success: true,
+      redirectUrl: serviceUrl,
+    });
   } catch (error) {
-    console.error("Erro ao baixar vídeo:", error);
+    console.error("Erro ao processar URL:", error);
     return NextResponse.json(
       { error: "Falha ao processar o vídeo. Verifique se a URL é válida." },
       { status: 500 }
