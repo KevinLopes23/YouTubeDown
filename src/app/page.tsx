@@ -26,7 +26,8 @@ export default function Home() {
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
-    } catch (_) {
+    } catch {
+      // Tratamento de erro simplificado sem usar o parâmetro
       setError("Ocorreu um erro ao processar o download");
       setIsLoading(false);
     }
