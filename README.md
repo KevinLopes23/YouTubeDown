@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# YouTubeDown
 
-## Getting Started
+Um aplicativo web moderno para baixar vídeos do YouTube em formato MP3 ou MP4.
 
-First, run the development server:
+![YouTubeDown Screenshot](https://user-images.githubusercontent.com/example/youtubedown-screenshot.png)
+
+## 📋 Descrição
+
+YouTubeDown é uma aplicação web construída com Next.js que permite aos usuários baixar vídeos do YouTube em formato de áudio (MP3) ou vídeo (MP4). O aplicativo possui uma interface moderna e intuitiva, facilitando o processo de download.
+
+## ✨ Funcionalidades
+
+- Interface moderna com design responsivo
+- Baixar vídeos em formato MP3 (apenas áudio)
+- Baixar vídeos em formato MP4 (vídeo + áudio)
+- Validação de URL do YouTube
+- Mensagens de erro claras para o usuário
+
+## 🛠️ Tecnologias Utilizadas
+
+- [Next.js](https://nextjs.org/) - Framework React para aplicações web
+- [React](https://reactjs.org/) - Biblioteca JavaScript para interfaces de usuário
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilitário
+- [ytdl-core](https://github.com/fent/node-ytdl-core) - Biblioteca para baixar vídeos do YouTube
+- [@distube/ytdl-core](https://github.com/distubejs/ytdl-core) - Fork alternativo para download de vídeos
+
+## 🚀 Instalação e Execução Local
 
 ```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/youtubedown.git
+cd youtubedown
+
+# Instale as dependências
+npm install
+
+# Execute o servidor de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O aplicativo estará disponível em [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 Como Usar
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Acesse a aplicação em seu navegador
+2. Cole a URL do vídeo do YouTube que deseja baixar
+3. Selecione o formato desejado (MP3 ou MP4)
+4. Clique no botão de download correspondente
+5. Aguarde o processamento e o download começará automaticamente
 
-## Learn More
+## ⚠️ Limitações e Considerações
 
-To learn more about Next.js, take a look at the following resources:
+- **Política do YouTube**: O YouTube tem políticas contra download automatizado de conteúdo. Esta ferramenta deve ser usada apenas para baixar conteúdo que você tem permissão para acessar ou que está sob licença livre.
+- **Restrições do YouTube**: O YouTube frequentemente altera seus sistemas para bloquear ferramentas de download. Algumas URLs podem resultar em erro 403 (Forbidden).
+- **Compatibilidade de URLs**: Nem todos os formatos de URL funcionam igualmente bem. Experimente com formatos diferentes:
+  - ✅ Funciona melhor: `https://www.youtube.com/watch?v=VIDEO_ID`
+  - ⚠️ Pode falhar: URLs curtas como `https://youtu.be/VIDEO_ID`
+- **Vídeos Populares**: Vídeos muito populares ou com restrições podem ser mais difíceis de baixar.
+- **Vídeos Regionais**: Vídeos com restrições regionais podem não funcionar corretamente.
+- **Compatibilidade**: As bibliotecas de download precisam ser atualizadas periodicamente devido a mudanças na API do YouTube.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔄 Solução de Problemas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Se encontrar erros ao baixar vídeos, tente:
 
-## Deploy on Vercel
+1. Usar o formato completo da URL (`https://www.youtube.com/watch?v=VIDEO_ID`)
+2. Tentar vídeos diferentes (alguns têm mais restrições que outros)
+3. Verificar se o vídeo não tem restrições de idade ou geográficas
+4. Reiniciar o servidor de desenvolvimento
+5. Atualizar as bibliotecas de download com `npm update ytdl-core @distube/ytdl-core`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Hospedagem
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### ❌ GitHub Pages
+
+Este projeto **NÃO é compatível** com GitHub Pages porque:
+
+- GitHub Pages hospeda apenas conteúdo estático (HTML, CSS, JavaScript)
+- Esta aplicação requer processamento no lado do servidor (server-side processing)
+- As APIs do Next.js e o processamento de download precisam de um ambiente de servidor
+
+### ✅ Opções de Hospedagem Recomendadas
+
+Para hospedar este aplicativo, você precisará de uma plataforma que suporte Next.js e APIs serverless:
+
+1. **[Vercel](https://vercel.com/)** - Criada pelos desenvolvedores do Next.js, oferece implantação gratuita para projetos pessoais.
+2. **[Netlify](https://www.netlify.com/)** - Suporta funções serverless e oferece plano gratuito.
+3. **[Railway](https://railway.app/)** - Plataforma para implantar aplicações full-stack.
+4. **[Render](https://render.com/)** - Oferece serviços web gratuitos com suporte a Next.js.
+
+## 📄 Licença
+
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests para melhorar este projeto.
+
+---
+
+⭐ Criado com ❤️ para facilitar o download de conteúdo do YouTube.
+
+_Nota: Use esta ferramenta com responsabilidade e respeite os direitos autorais dos criadores de conteúdo._
