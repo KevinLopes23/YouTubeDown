@@ -42,12 +42,16 @@ export async function GET(request: NextRequest) {
       return new Response(stream as unknown as ReadableStream, {
         headers: headers,
       });
-    } catch (downloadError) {
+    } catch (downloadError: unknown) {
       console.error("Erro detalhado:", downloadError);
-      return NextResponse.json(
-        { error: `Erro ao processar o vídeo: ${downloadError.message}` },
-        { status: 500 }
-      );
+      let errorMessage = "Erro ao processar o vídeo";
+
+      // Verificar se o erro tem uma propriedade 'message'
+      if (downloadError instanceof Error) {
+        errorMessage = `${errorMessage}: ${downloadError.message}`;
+      }
+
+      return NextResponse.json({ error: errorMessage }, { status: 500 });
     }
   } catch (error) {
     console.error("Erro ao baixar vídeo:", error);
