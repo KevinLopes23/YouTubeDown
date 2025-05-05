@@ -7,3 +7,4 @@
 *.tsx linguist-language=TypeScript
 *.json linguist-language=JSON
 *.css linguist-language=CSS
+ffmpeg-7.1.1-essentials_build/** linguist-vendored
