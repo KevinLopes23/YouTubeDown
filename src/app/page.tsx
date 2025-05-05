@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 export default function Home() {
   const [url, setUrl] = useState("");
@@ -27,7 +26,7 @@ export default function Home() {
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
-    } catch (err) {
+    } catch (_) {
       setError("Ocorreu um erro ao processar o download");
       setIsLoading(false);
     }

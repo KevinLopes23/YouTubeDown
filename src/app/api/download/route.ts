@@ -30,8 +30,8 @@ export async function GET(request: NextRequest) {
       const title = info.videoDetails.title.replace(/[^\w\s]/gi, "") || "video";
 
       // Escolher o formato correto baseado no request
-      let contentType = format === "mp3" ? "audio/mpeg" : "video/mp4";
-      let filename = `${title}.${format}`;
+      const contentType = format === "mp3" ? "audio/mpeg" : "video/mp4";
+      const filename = `${title}.${format}`;
 
       // Iniciar o download
       const stream = ytdl(url, options);
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
       headers.set("Content-Type", contentType);
 
       // Retornar o stream como resposta
-      return new Response(stream as any, {
+      return new Response(stream as unknown as ReadableStream, {
         headers: headers,
       });
     } catch (downloadError) {
