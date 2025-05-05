@@ -1,96 +1,74 @@
-# YouTubeDown
+# 🎬 YTDownloader
 
-Um aplicativo web moderno para baixar vídeos do YouTube em formato MP3 ou MP4.
+YTDownloader é uma aplicação web moderna para download de vídeos do YouTube em formatos MP3 e MP4, com interface responsiva e experiência de usuário otimizada.
 
-![YouTubeDown Screenshot](https://user-images.githubusercontent.com/example/youtubedown-screenshot.png)
+![YTDownloader](https://img.shields.io/badge/YTDownloader-1.0.0-blue)
+![Next.js](https://img.shields.io/badge/Next.js-14.2.3-black)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3.0-38B2AC)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-## 📋 Descrição
+## 📋 Funcionalidades
 
-YouTubeDown é uma aplicação web construída com Next.js que permite aos usuários baixar vídeos do YouTube em formato de áudio (MP3) ou vídeo (MP4). O aplicativo possui uma interface moderna e intuitiva, facilitando o processo de download.
-
-## ✨ Funcionalidades
-
-- Interface moderna com design responsivo
-- Download de vídeos em formato MP3 (apenas áudio)
-- Download de vídeos em formato MP4 (vídeo + áudio)
-- Validação de URL do YouTube
-- Integração com serviços de terceiros para evitar bloqueios do YouTube
+- 🎵 Download de áudio em formato MP3
+- 🎥 Download de vídeo em formato MP4
+- 🌐 Interface responsiva para dispositivos móveis e desktop
+- 🌙 Suporte a tema claro e escuro
+- ⚡ Indicador de progresso em tempo real
+- 💾 Processamento rápido dos downloads
 
 ## 🛠️ Tecnologias Utilizadas
 
-- [Next.js](https://nextjs.org/) - Framework React para aplicações web
-- [React](https://reactjs.org/) - Biblioteca JavaScript para interfaces de usuário
-- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilitário
-- API de Serviços Externos para processamento de vídeo
+- **Next.js**: Framework React para renderização do lado do servidor
+- **Tailwind CSS**: Framework CSS utilitário
+- **Framer Motion**: Biblioteca para animações fluidas
+- **yt-dlp**: Ferramenta de linha de comando para download de vídeos
+- **FFmpeg**: Processamento de áudio e vídeo
+- **TypeScript**: Linguagem de programação tipada
 
-## 🚀 Instalação e Execução Local
+## ⚙️ Instalação e Uso
 
-```bash
-# Clone o repositório
-git clone https://github.com/KevinLopes23/youtubedown.git
-cd youtubedown
+1. Clone o repositório:
 
-# Instale as dependências
-npm install
+   ```bash
+   git clone https://github.com/seu-usuario/videos-yt.git
+   cd videos-yt
+   ```
 
-# Execute o servidor de desenvolvimento
-npm run dev
-```
+2. Instale as dependências:
 
-O aplicativo estará disponível em [http://localhost:3000](http://localhost:3000).
+   ```bash
+   npm install
+   ```
 
-## 📝 Como Usar
+3. Baixe o yt-dlp.exe e o ffmpeg.exe e coloque-os na raiz do projeto.
 
-1. Acesse a aplicação em seu navegador
-2. Cole a URL do vídeo do YouTube que deseja baixar
-3. Selecione o formato desejado (MP3 para áudio, MP4 para vídeo)
-4. Clique no botão de download correspondente
-5. O sistema redirecionará para um serviço de processamento e o download começará automaticamente
+4. Inicie o servidor de desenvolvimento:
 
-## ⚠️ Limitações e Considerações
+   ```bash
+   npm run dev
+   ```
 
-- **Política do YouTube**: O YouTube tem políticas contra download automatizado de conteúdo. Esta ferramenta deve ser usada apenas para baixar conteúdo que você tem permissão para acessar ou que está sob licença livre.
-- **Serviços de Terceiros**: Esta aplicação depende de serviços externos para evitar bloqueios. Se esses serviços mudarem sua API, será necessário atualizar o aplicativo.
-- **Compatibilidade de URLs**: Nem todos os formatos de URL funcionam igualmente bem. Experimente com formatos diferentes:
-  - ✅ Funciona melhor: `https://www.youtube.com/watch?v=VIDEO_ID`
-  - ⚠️ Pode falhar: URLs curtas como `https://youtu.be/VIDEO_ID`
-- **Vídeos Protegidos**: Vídeos com restrições podem não funcionar com os serviços externos.
+5. Acesse a aplicação em http://localhost:3000
 
-## 🔄 Solução de Problemas
+## 📱 Como Usar
 
-Se encontrar erros ao baixar vídeos, tente:
+1. Cole a URL do vídeo do YouTube no campo de entrada
+2. Selecione o formato desejado (MP3 para áudio, MP4 para vídeo)
+3. Clique no botão correspondente para iniciar o download
+4. Aguarde o processamento ser concluído
+5. O arquivo será baixado automaticamente
 
-1. Usar o formato completo da URL (`https://www.youtube.com/watch?v=VIDEO_ID`)
-2. Tentar vídeos diferentes (alguns têm mais restrições que outros)
-3. Verificar se o vídeo não tem restrições de idade ou geográficas
+## ⚠️ Importante
 
-## 🌐 Hospedagem
+Esta aplicação é para uso pessoal e educacional. Por favor, respeite os direitos autorais e só baixe conteúdos que você tem permissão para acessar.
 
-### ✅ Opções de Hospedagem Recomendadas
+## 👨‍💻 Autor
 
-Este projeto está otimizado para ser hospedado em:
+**Kevin Lopes** - Desenvolvedor Full Stack
 
-1. **[Vercel](https://vercel.com/)** - Criada pelos desenvolvedores do Next.js
-2. **[Netlify](https://www.netlify.com/)** - Suporta funções serverless
-3. **[Railway](https://railway.app/)** - Plataforma para implantar aplicações full-stack
-4. **[Render](https://render.com/)** - Oferece serviços web gratuitos com suporte a Next.js
+[![GitHub](https://img.shields.io/badge/GitHub-KevinLopes23-181717?style=for-the-badge&logo=github)](https://github.com/KevinLopes23)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Kevin_Lopes-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/kevin-lopes-151797221/)
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 🔄 Atualizações Recentes
-
-- Migração para uma abordagem baseada em redirecionamento para APIs de terceiros
-- Remoção da dependência de bibliotecas que são bloqueadas pelo YouTube
-- Melhoria no tratamento de erros e feedback ao usuário
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests para melhorar este projeto.
-
----
-
-⭐ Criado com ❤️ para facilitar o download de conteúdo do YouTube.
-
-_Nota: Use esta ferramenta com responsabilidade e respeite os direitos autorais dos criadores de conteúdo._
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
