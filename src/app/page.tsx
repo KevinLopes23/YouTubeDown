@@ -6,6 +6,7 @@ export default function Home() {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showInstructions, setShowInstructions] = useState(false);
 
   const handleDownload = async (format: "mp3" | "mp4") => {
     if (!url) {
@@ -29,8 +30,11 @@ export default function Home() {
       }
 
       if (data.success && data.redirectUrl) {
+        // Mostrar instruções antes de redirecionar
+        setShowInstructions(true);
+
         // Redirecionar para o serviço externo de download
-        window.location.href = data.redirectUrl;
+        window.open(data.redirectUrl, "_blank");
       } else {
         throw new Error("Resposta da API inválida");
       }
@@ -132,6 +136,33 @@ export default function Home() {
                 )}
               </button>
             </div>
+
+            {showInstructions && (
+              <div className="mt-6 p-4 bg-purple-500/30 rounded-lg">
+                <h3 className="font-bold text-lg mb-2">Instruções:</h3>
+                <ol className="list-decimal list-inside space-y-2">
+                  <li>Uma nova aba foi aberta com o site de download</li>
+                  <li>
+                    No site externo, clique em "Download" ao lado da qualidade
+                    desejada
+                  </li>
+                  <li>
+                    Se necessário, ignore anúncios ou pop-ups redirecionando
+                    para a aba original
+                  </li>
+                  <li>
+                    O download deve começar automaticamente ou ser oferecido
+                    para você
+                  </li>
+                </ol>
+                <button
+                  className="mt-4 text-purple-200 text-sm hover:underline"
+                  onClick={() => setShowInstructions(false)}
+                >
+                  Ocultar instruções
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="mt-12 bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-xl">
@@ -142,8 +173,10 @@ export default function Home() {
                 Escolha o formato desejado (MP3 para áudio, MP4 para vídeo)
               </li>
               <li>Clique no botão correspondente para iniciar o download</li>
+              <li>Uma nova aba será aberta com o site de download externo</li>
               <li>
-                Aguarde o processamento e o download irá começar automaticamente
+                No site externo, selecione a qualidade desejada e continue o
+                processo de download
               </li>
             </ol>
           </div>
@@ -167,10 +200,10 @@ export default function Home() {
               Importante
             </h3>
             <p>
-              Este aplicativo usa serviços de terceiros para processar os
-              downloads. Apenas baixe conteúdo que você tenha permissão para
-              acessar. O tempo de processamento pode variar conforme o tamanho
-              do vídeo.
+              Este aplicativo redireciona para serviços de terceiros para
+              processar os downloads. Você será enviado para um site
+              especializado que concluirá o processo de download. Apenas baixe
+              conteúdo que você tenha permissão para acessar.
             </p>
           </div>
         </main>

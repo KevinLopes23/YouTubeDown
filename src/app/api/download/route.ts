@@ -25,12 +25,21 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Redirecionamento para serviços alternativos confiáveis
-    // Esta é uma solução não ideal, mas que funciona em ambientes hospedados
+    // Usando serviços alternativos mais confiáveis
+    // Y2mate é uma alternativa popular para download do YouTube
+    const videoId = extractVideoId(url);
+    if (!videoId) {
+      return NextResponse.json(
+        { error: "Não foi possível extrair o ID do vídeo" },
+        { status: 400 }
+      );
+    }
+
+    // Usando o serviço yout-ube que é mais confiável
     const serviceUrl =
       format === "mp3"
-        ? `https://api.vevioz.com/api/button/mp3/${encodeURIComponent(url)}`
-        : `https://api.vevioz.com/api/button/mp4/${encodeURIComponent(url)}`;
+        ? `https://www.y2mate.com/youtube-mp3/${videoId}`
+        : `https://www.y2mate.com/youtube/${videoId}`;
 
     return NextResponse.json({
       success: true,
@@ -43,4 +52,11 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+// Função para extrair o ID do vídeo do YouTube
+function extractVideoId(url: string): string | null {
+  // Para URLs no formato: https://www.youtube.com/watch?v=VIDEO_ID
+  let match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\?]*)/);
+  return match ? match[1] : null;
 }
