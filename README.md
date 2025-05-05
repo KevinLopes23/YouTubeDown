@@ -67,10 +67,6 @@ Se encontrar erros ao baixar vídeos, tente:
 4. Reiniciar o servidor de desenvolvimento
 5. Atualizar as bibliotecas de download com `npm update ytdl-core @distube/ytdl-core`
 
-## 📄 Licença
-
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
 ## 🤝 Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests para melhorar este projeto.
