@@ -2,8 +2,6 @@
 
 Um aplicativo web moderno para baixar vídeos do YouTube em formato MP3 ou MP4.
 
-![YouTubeDown Screenshot](https://user-images.githubusercontent.com/example/youtubedown-screenshot.png)
-
 ## 📋 Descrição
 
 YouTubeDown é uma aplicação web construída com Next.js que permite aos usuários baixar vídeos do YouTube em formato de áudio (MP3) ou vídeo (MP4). O aplicativo possui uma interface moderna e intuitiva, facilitando o processo de download.
@@ -68,25 +66,6 @@ Se encontrar erros ao baixar vídeos, tente:
 3. Verificar se o vídeo não tem restrições de idade ou geográficas
 4. Reiniciar o servidor de desenvolvimento
 5. Atualizar as bibliotecas de download com `npm update ytdl-core @distube/ytdl-core`
-
-## 🌐 Hospedagem
-
-### ❌ GitHub Pages
-
-Este projeto **NÃO é compatível** com GitHub Pages porque:
-
-- GitHub Pages hospeda apenas conteúdo estático (HTML, CSS, JavaScript)
-- Esta aplicação requer processamento no lado do servidor (server-side processing)
-- As APIs do Next.js e o processamento de download precisam de um ambiente de servidor
-
-### ✅ Opções de Hospedagem Recomendadas
-
-Para hospedar este aplicativo, você precisará de uma plataforma que suporte Next.js e APIs serverless:
-
-1. **[Vercel](https://vercel.com/)** - Criada pelos desenvolvedores do Next.js, oferece implantação gratuita para projetos pessoais.
-2. **[Netlify](https://www.netlify.com/)** - Suporta funções serverless e oferece plano gratuito.
-3. **[Railway](https://railway.app/)** - Plataforma para implantar aplicações full-stack.
-4. **[Render](https://render.com/)** - Oferece serviços web gratuitos com suporte a Next.js.
 
 ## 📄 Licença
 
