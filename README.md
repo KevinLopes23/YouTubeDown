@@ -27,7 +27,7 @@ YouTubeDown é uma aplicação web construída com Next.js que permite aos usuá
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/youtubedown.git
+git clone https://github.com/KevinLopes23/youtubedown.git
 cd youtubedown
 
 # Instale as dependências
