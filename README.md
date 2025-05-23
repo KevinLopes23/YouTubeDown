@@ -60,7 +60,7 @@ YTDownloader é uma aplicação web moderna para download de vídeos do YouTube 
 
 ## ⚠️ Importante
 
-Esta aplicação é para uso pessoal e educacional. Por favor, respeite os direitos autorais e só baixe conteúdos que você tem permissão para acessar.
+Esta aplicação é para uso pessoal e educacional. Por favor, respeite os direitos autorais e só baixe conteúdos que você tem permissão para acessar.Apenas localmente pelas politicas do Youtube
 
 ## 👨‍💻 Autor
 
